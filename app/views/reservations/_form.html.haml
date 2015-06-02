@@ -1,0 +1,7 @@
+= simple_form_for @reservation do |f|
+  = f.association :table, prompt: 'Select Table:'
+  = f.input :start_time, as: :string, input_html: {class: 'picker-start'}
+  .divider
+  = f.input :end_time, as: :string, input_html:{class: 'picker-end'}
+  = f.input :client_name
+  = f.button :submit

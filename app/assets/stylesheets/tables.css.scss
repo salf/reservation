@@ -1,0 +1,23 @@
+#tables-list{
+  margin-top: 30px;
+
+  .single-table{
+    float: left;
+  }
+
+  .menu-holder{
+    float: left;
+    width: 70px;
+  }
+
+  .menu a{
+    clear: both;
+    text-decoration: none;
+  }
+  .menu{
+    font-size: 16px;
+
+    .schedule{ color: #3FBB19; }
+    .remove{ color: red; }
+  }
+}

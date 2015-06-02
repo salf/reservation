@@ -1,0 +1,6 @@
+= simple_form_for @table do |f|
+  = f.input :name, label: 'Table number or name:'
+  = f.input :person_volume, label: 'Table volume, persons:'
+  = f.input :position, label: 'Position number:'
+  = f.input :active
+  = f.button :submit
