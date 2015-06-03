@@ -2,22 +2,22 @@
 
 - if @tables.empty?
   [ No table at this time ]
-
-#tables-list.container
-  .row
-    - for table in @tables
-      .single-table
-        .btn.btn-lg.btn-default.single-table
-          = table.name
-          %br
-          x
-          = table.person_volume
-        .menu-holder
-          .menu.hidden
-            .col-sm-12
-              = link_to icon('pencil'), edit_table_path(table), class: 'edit'
-            .col-sm-12
-              = link_to icon('time'), new_table_reservation_path(table), class: 'schedule'
-            .col-sm-12
-              = link_to icon('remove'), table_path(table), method: :delete, data: {confirm: 'Are you sure?'}, class: 'remove'
+- else
+  #tables-list.container
+    .row
+      - for table in @tables
+        .single-table
+          .btn.btn-lg.btn-default.single-table
+            = table.name
+            %br
+            x
+            = table.person_volume
+          .menu-holder
+            .menu.hidden
+              .col-sm-12
+                = link_to icon('pencil'), edit_table_path(table), class: 'edit'
+              .col-sm-12
+                = link_to icon('time'), new_table_reservation_path(table), class: 'schedule'
+              .col-sm-12
+                = link_to icon('remove'), table_path(table), method: :delete, data: {confirm: 'Are you sure?'}, class: 'remove'
 

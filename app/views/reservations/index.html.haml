@@ -2,21 +2,22 @@
 
 - if @reservations.empty?
   [ No reservation at this time ]
-#reservations-list
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Table
-        %th Date
-        %th Time
-        %th Client Name
-        %th{colspan: 2} Actions
-    %tbody
-      - for reservation in @reservations do
+-else
+  #reservations-list
+    %table.table.table-striped
+      %thead
         %tr
-          %th= reservation.table.name
-          %td= reservation.start_time.strftime("%a, %d/%b/%Y")
-          %td= reservation.interval
-          %td= reservation.client_name
-          %td= link_to icon('pencil'), edit_reservation_path(reservation), class: 'edit'
-          %td= link_to icon('remove'), reservation_path(reservation), method: :delete, data: {confirm: 'Are you sure?'}, class: 'remove'
+          %th Table
+          %th Date
+          %th Time
+          %th Client Name
+          %th{colspan: 2} Actions
+      %tbody
+        - for reservation in @reservations do
+          %tr
+            %th= reservation.table.name
+            %td= reservation.start_time.strftime("%a, %d/%b/%Y")
+            %td= reservation.interval
+            %td= reservation.client_name
+            %td= link_to icon('pencil'), edit_reservation_path(reservation), class: 'edit'
+            %td= link_to icon('remove'), reservation_path(reservation), method: :delete, data: {confirm: 'Are you sure?'}, class: 'remove'
