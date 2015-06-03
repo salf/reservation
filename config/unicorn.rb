@@ -8,6 +8,7 @@ working_directory  "#{app_path}/current"
 pid                "#{app_path}/tmp/pids/unicorn.pid"
 stderr_path        "log/unicorn.log"
 stdout_path        "log/unicorn.log"
+env                "production"
 
 before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect!

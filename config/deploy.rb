@@ -9,6 +9,7 @@ set :deploy_to, '/home/reserv/apps/reservations'
 set :repository, 'git@github.com:salf/reservation.git'
 set :branch, 'master'
 
+set :default_server, :production
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
