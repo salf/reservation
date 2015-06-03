@@ -23,7 +23,7 @@ Unit tests are a must to make sure your double booking validations are working.
   * 4.1.9
 
 ## System dependencies
-  * mysql2
+  * sqlite3 (best for quick test)
   * twitter-bootstrap v3
   * turbolinks
   * simple_form
