@@ -3,11 +3,14 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'
 # require 'mina/rvm'
+require 'mina/unicorn'
 
 set :domain, '46.101.187.243'
 set :deploy_to, '/home/reserv/apps/reservations'
 set :repository, 'git@github.com:salf/reservation.git'
 set :branch, 'master'
+
+set :unicorn_pid, "#{deploy_to}/tmp/pids/unicorn.pid"
 
 set :default_server, :production
 
@@ -62,44 +65,6 @@ task :deploy => :environment do
       # queue "touch #{deploy_to}/tmp/restart.txt"
       invoke :'unicorn:restart'
     end
-  end
-end
-
-
-#                                                                       Unicorn
-# ==============================================================================
-namespace :unicorn do
-  set :unicorn_pid, "#{deploy_to}/tmp/pids/unicorn.pid"
-  set :start_unicorn, %{
-    cd #{deploy_to}/current
-    bundle exec unicorn -c #{deploy_to}/current/config/unicorn.rb -E #{rails_env} -D
-  }
-
-#                                                                    Start task
-# ------------------------------------------------------------------------------
-  desc "Start unicorn"
-  task :start => :environment do
-    queue 'echo "-----> Start Unicorn"'
-    queue! start_unicorn
-  end
-
-#                                                                     Stop task
-# ------------------------------------------------------------------------------
-  desc "Stop unicorn"
-  task :stop do
-    queue 'echo "-----> Stop Unicorn"'
-    queue! %{
-      test -s "#{unicorn_pid}" && kill -QUIT `cat "#{unicorn_pid}"` && echo "Stop Ok" && exit 0
-      echo >&2 "Not running"
-    }
-  end
-
-#                                                                  Restart task
-# ------------------------------------------------------------------------------
-  desc "Restart unicorn using 'upgrade'"
-  task :restart => :environment do
-    invoke 'unicorn:stop'
-    invoke 'unicorn:start'
   end
 end
 
