@@ -24,8 +24,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'simple_form'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 group :development do
   # rails application preloader
@@ -38,6 +37,7 @@ group :development do
   gem 'pry', group: :test
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'mina'
 end
 
 group :test do
