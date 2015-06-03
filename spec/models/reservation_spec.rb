@@ -42,5 +42,32 @@ RSpec.describe Reservation, type: :model do
       reservation_next = build(:reservation, end_time: (Time.now + 1.hour))
       expect(reservation_next.valid?).to be(true)
     end
+
+    it "should update client_name for valid record" do
+      reservation.client_name = 'Sarah Connor'
+      expect(reservation).to be_valid
+    end
+
+    xit "should update time for valid record" do
+      valid_reserv = create(:reservation, {
+                               start_time: (Time.now + 3.hours),
+                               end_time: (Time.now + 4.hours),
+                               table: reservation.table
+                            })
+
+      valid_reserv.end_time = Time.now + 210.minutes
+      expect(valid_reserv).to be_valid
+    end
+
+    it "should update time for valid record with overlaping" do
+      valid_reserv = create(:reservation, {
+                               start_time: (Time.now + 5.hours),
+                               end_time: (Time.now + 6.hours),
+                               table: reservation.table
+                            })
+
+      valid_reserv.start_time = Time.now + 1.hour
+      expect(valid_reserv).to_not be_valid
+    end
   end
 end

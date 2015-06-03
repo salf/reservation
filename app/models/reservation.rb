@@ -27,8 +27,10 @@ class Reservation < ActiveRecord::Base
   def time_frame
     if Reservation.where("
         table_id = :table_id AND
+        #{'id <> :id AND' if id}
         (:s between start_time and end_time OR :e between start_time and end_time)",
         table_id: table_id,
+        id: id,
         s: start_time,
         e: end_time
     ).count > 0
