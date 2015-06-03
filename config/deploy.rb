@@ -16,7 +16,7 @@ set :default_server, :production
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
+set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log', 'db/production.sqlite3']
 
 # Optional settings:
 set :user, 'reserv'    # Username in the server to SSH to.
