@@ -48,7 +48,7 @@ RSpec.describe Reservation, type: :model do
       expect(reservation).to be_valid
     end
 
-    xit "should update time for valid record" do
+    it "should update time for valid record" do
       valid_reserv = create(:reservation, {
                                start_time: (Time.now + 3.hours),
                                end_time: (Time.now + 4.hours),
