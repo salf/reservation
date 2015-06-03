@@ -2,7 +2,7 @@ app_path = "/home/reserv/apps/reservations"
 worker_processes   1
 timeout            30
 preload_app        true
-listen             '/tmp/unicorn.api.sock'
+listen             "#{app_path}/shared/sockets/unicorn.sock"
 user               'reserv', 'reserv'
 working_directory  "#{app_path}/current"
 pid                "#{app_path}/tmp/pids/unicorn.pid"
