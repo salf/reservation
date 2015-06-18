@@ -40,5 +40,6 @@ group :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
   gem 'database_cleaner'
+  gem 'fuubar'
   gem 'factory_girl_rails', group: :development
 end

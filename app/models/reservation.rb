@@ -28,7 +28,11 @@ class Reservation < ActiveRecord::Base
     if Reservation.where("
         table_id = :table_id AND
         #{'id <> :id AND' if id}
-        (:s between start_time and end_time OR :e between start_time and end_time)",
+        (
+          (:s between start_time and end_time OR :e between start_time and end_time)
+          OR
+          (start_time between :s and :e OR end_time between :s and :e)
+        )",
         table_id: table_id,
         id: id,
         s: start_time,
